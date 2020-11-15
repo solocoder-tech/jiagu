@@ -1,0 +1,26 @@
+apply plugin: 'groovy'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //引入android 插件库
+    implementation "com.android.tools.build:gradle:4.0.1"
+    //引入gradleApi
+    implementation gradleApi()
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+//将插件上传的本地仓库  MavenLocal
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        LDJiaGu(MavenPublication) {
+            from components.java //指定上传源码jar包
+            groupId 'com.ldrobot'
+            artifactId 'ldjiagu'
+            version '1.0'
+        }
+    }
+}

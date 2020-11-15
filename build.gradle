@@ -1,0 +1,34 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+// build 脚本编译的时候使用的依赖
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenLocal()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.1"
+        //aws amplify
+        classpath 'com.amplifyframework:amplify-tools-gradle-plugin:1.0.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+        classpath 'com.ldrobot:ldjiagu:1.0'
+    }
+}
+//build脚本中dependencies的依赖库使用
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+//task ldAssembleDebug(type:assembleDebug){
+//    logger.debug("hello assemble!")
+//}
+
+//apply plugin: 'com.amplifyframework.amplifytools'

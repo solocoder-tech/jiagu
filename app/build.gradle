@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+//引入插件和配置插件
+apply plugin: "com.ldrobot.ldjiagu"
+
+LDJiaGu {
+    accountName "13627296710"
+    accountPwd "zhuwujing726"
+    jiaGuToolPath "D:\\study\\jiagu\\360jiagubao_windows_64\\jiagu\\jiagu.jar"
+}
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.example.aws"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        // Support for Java 8 features
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Amplify plugins
+    implementation 'com.amplifyframework:aws-api:1.4.1'
+    implementation 'com.amplifyframework:aws-datastore:1.4.1'
+
+    // Support for Java 8 features
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
+
+    implementation 'com.android.support:multidex:2.0.1'
+
+    //For the drop-in UI also:
+    implementation 'com.amazonaws:aws-android-sdk-auth-userpools:2.16.+'
+    implementation 'com.amazonaws:aws-android-sdk-auth-ui:2.16.+'
+    //For hosted UI also:
+    implementation 'com.amazonaws:aws-android-sdk-cognitoauth:2.16.+'
+
+    //认证
+    implementation 'com.amplifyframework:aws-auth-cognito:1.4.1'
+    //For AWSMobileClient only:
+    implementation('com.amazonaws:aws-android-sdk-mobile-client:2.16.+@aar') { transitive = true }
+    //iot
+    implementation('com.amazonaws:aws-android-sdk-iot:2.16.+@aar') { transitive = true }
+
+}
+
+afterEvaluate {
+    tasks.LDJiaGuDebug.dependsOn tasks.assembleDebug
+//    tasks.matching {
+////        it.name.startsWith("assembleDebug")
+//        it.name.startsWith("LDJiaGuDebug")
+//    }.each {
+//        target ->
+//            target.doLast {
+//                println "hello  wwa ${target.name}"
+//                tasks.assembleDebug.dependsOn target
+//            }
+//    }
+}

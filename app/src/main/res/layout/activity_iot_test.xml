@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <EditText
+            android:id="@+id/publish_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="publish string" />
+
+    <Button
+            android:id="@+id/publish_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="publish"
+            android:textAllCaps="false" />
+
+    <Button
+            android:id="@+id/subscribe_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="subscribe"
+            android:textAllCaps="false" />
+
+    <Button
+            android:id="@+id/unsubscribe_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="unsubscribe"
+            android:textAllCaps="false" />
+
+
+    <Button
+            android:id="@+id/clear_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="clear"
+            android:textAllCaps="false" />
+
+    <EditText
+            android:id="@+id/show_result_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="true"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:minLines="8"
+            android:scrollbars="vertical" />
+
+</LinearLayout>

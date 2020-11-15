@@ -1,0 +1,3 @@
+include ':plugin'//Gradle 会为每个Settings 文件创建一个Setting对象
+include ':app'
+rootProject.name = "aws"
